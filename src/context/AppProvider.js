@@ -9,7 +9,8 @@ function AppProvider({ children }) {
     fetch('https://swapi.dev/api/planets')
       .then((response) => response.json())
       .then((dataApi) => {
-        console.log();
+        dataApi.results.forEach((planet) => delete planet.residents);
+        console.log(dataApi.results);
         setData(dataApi.results);
       });
   }, []);
