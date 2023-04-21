@@ -5,7 +5,7 @@ export const AppContext = createContext([]);
 
 function AppProvider({ children }) {
   const [data, setData] = useState();
-  useEffect(() => {
+  const fetchData = () => {
     fetch('https://swapi.dev/api/planets')
       .then((response) => response.json())
       .then((dataApi) => {
@@ -13,9 +13,16 @@ function AppProvider({ children }) {
         console.log(dataApi.results);
         setData(dataApi.results);
       });
+  };
+  useEffect(() => {
+    fetchData();
   }, []);
 
-  return <AppContext.Provider value={ { data } }>{children}</AppContext.Provider>;
+  const values = {
+    data,
+  };
+
+  return <AppContext.Provider value={ values }>{children}</AppContext.Provider>;
 }
 AppProvider.propTypes = {
   children: PropTypes.element.isRequired,
