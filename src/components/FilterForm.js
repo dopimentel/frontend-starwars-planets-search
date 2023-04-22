@@ -33,6 +33,7 @@ function FilterForm() {
       <hr />
       <label htmlFor="inputName">Filtrar por nome:</label>
       <input
+        data-testid="name-filter"
         type="text"
         id="inputName"
         value={ filterByName }
