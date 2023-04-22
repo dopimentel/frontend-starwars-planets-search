@@ -5,6 +5,11 @@ export const AppContext = createContext([]);
 
 function AppProvider({ children }) {
   const [data, setData] = useState();
+  const [filterByName, setFilterByName] = useState('');
+  const [column, setColumn] = useState('');
+  const [operation, setOperation] = useState('');
+  const [value, setValue] = useState('');
+
   const fetchData = () => {
     fetch('https://swapi.dev/api/planets')
       .then((response) => response.json())
@@ -20,6 +25,14 @@ function AppProvider({ children }) {
 
   const values = {
     data,
+    filterByName,
+    column,
+    operation,
+    value,
+    setFilterByName,
+    setColumn,
+    setOperation,
+    setValue,
   };
 
   return <AppContext.Provider value={ values }>{children}</AppContext.Provider>;

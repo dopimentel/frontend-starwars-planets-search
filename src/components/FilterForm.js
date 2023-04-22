@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { AppContext } from '../context/AppProvider';
 
 const COLUMNS = [
   'population',
@@ -11,10 +12,16 @@ const COLUMNS = [
 const COMPARISON_OPTIONS = ['maior que', 'menor que', 'igual a'];
 
 function FilterForm() {
-  const [inputValue, setInputValue] = useState('');
-  const [column, setColumn] = useState('');
-  const [operation, setOperation] = useState('');
-  const [value, setValue] = useState('');
+  const {
+    filterByName,
+    column,
+    operation,
+    value,
+    setFilterByName,
+    setColumn,
+    setOperation,
+    setValue,
+  } = useContext(AppContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -24,12 +31,12 @@ function FilterForm() {
   return (
     <form onSubmit={ handleSubmit }>
       <hr />
-      <label htmlFor="inputField">Filtrar por nome:</label>
+      <label htmlFor="inputName">Filtrar por nome:</label>
       <input
         type="text"
-        id="inputField"
-        value={ inputValue }
-        onChange={ (e) => setInputValue(e.target.value) }
+        id="inputName"
+        value={ filterByName }
+        onChange={ (e) => setFilterByName(e.target.value) }
       />
       <br />
       <label>
@@ -72,7 +79,7 @@ function FilterForm() {
           onChange={ (e) => setValue(e.target.value) }
         />
       </label>
-      <button type="submit">Enviar</button>
+      <button type="submit">Filtrar</button>
       <hr />
     </form>
   );
