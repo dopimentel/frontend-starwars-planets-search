@@ -124,16 +124,22 @@ function FilterForm() {
 
         <hr />
       </form>
-      {currentFilters.map(
-        ({ column: col, operation: oper, value: val }, index) => (
-          <div key={ index } data-testid="filter">
-            {`${col} ${oper} ${val}`}
-            <button id={ `${col}` } type="button" onClick={ (e) => handleClick(e) }>
-              X
-            </button>
-          </div>
-        ),
-      )}
+      <ul>
+        {currentFilters.map(
+          ({ column: col, operation: oper, value: val }, index) => (
+            <li key={ index } data-testid="filter">
+              {`${col} ${oper} ${val}`}
+              <button
+                id={ `${col}` }
+                type="button"
+                onClick={ (e) => handleClick(e) }
+              >
+                X
+              </button>
+            </li>
+          ),
+        )}
+      </ul>
     </div>
   );
 }
