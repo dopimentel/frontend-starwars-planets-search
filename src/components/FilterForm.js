@@ -23,6 +23,7 @@ function FilterForm() {
     setOperation,
     setValue,
     setCurrentFilters,
+    deleteFilter,
   } = useContext(AppContext);
 
   const [columns, setColumns] = useState(COLUMNS);
@@ -40,68 +41,85 @@ function FilterForm() {
     setColumns(columns.filter((elem) => elem !== column));
   };
 
+  // const handleClick = (e) => {
+  //   console.log('clicou');
+  //   console.log(e.target.id);
+  // };
+
   return (
-    <form onSubmit={ handleSubmit }>
-      <hr />
-      <label htmlFor="inputName">Filtrar por nome:</label>
-      <input
-        data-testid="name-filter"
-        type="text"
-        id="inputName"
-        value={ filterByName }
-        onChange={ (e) => setFilterByName(e.target.value) }
-      />
-      <br />
-      <label>
-        Coluna
-        <select
-          data-testid="column-filter"
-          name="coluna"
-          value={ column }
-          onChange={ (e) => setColumn(e.target.value) }
-        >
-          {columns.map((col) => (
-            <option key={ col } value={ col }>
-              {col}
-            </option>
-          ))}
-        </select>
-      </label>
-
-      <label>
-        Operação
-        <select
-          data-testid="comparison-filter"
-          name="operad"
-          value={ operation }
-          onChange={ (e) => setOperation(e.target.value) }
-        >
-          {COMPARISON_OPTIONS.map((comparison) => (
-            <option key={ comparison } value={ comparison }>
-              {comparison}
-            </option>
-          ))}
-        </select>
-      </label>
-
-      <label>
-        Número
+    <div>
+      <form onSubmit={ handleSubmit }>
+        <hr />
+        <label htmlFor="inputName">Filtrar por nome:</label>
         <input
-          data-testid="value-filter"
-          type="number"
-          value={ value }
-          onChange={ (e) => setValue(e.target.value) }
+          data-testid="name-filter"
+          type="text"
+          id="inputName"
+          value={ filterByName }
+          onChange={ (e) => setFilterByName(e.target.value) }
         />
-      </label>
-      <button
-        data-testid="button-filter"
-        type="submit"
-        disabled={ !columns.length }
-      >
-        Filtrar
-      </button>
-      <hr />
-    </form>
+        <br />
+        <label>
+          Coluna
+          <select
+            data-testid="column-filter"
+            name="coluna"
+            value={ column }
+            onChange={ (e) => setColumn(e.target.value) }
+          >
+            {columns.map((col) => (
+              <option key={ col } value={ col }>
+                {col}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label>
+          Operação
+          <select
+            data-testid="comparison-filter"
+            name="operad"
+            value={ operation }
+            onChange={ (e) => setOperation(e.target.value) }
+          >
+            {COMPARISON_OPTIONS.map((comparison) => (
+              <option key={ comparison } value={ comparison }>
+                {comparison}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label>
+          Número
+          <input
+            data-testid="value-filter"
+            type="number"
+            value={ value }
+            onChange={ (e) => setValue(e.target.value) }
+          />
+        </label>
+        <button
+          data-testid="button-filter"
+          type="submit"
+          disabled={ !columns.length }
+        >
+          Filtrar
+        </button>
+        <hr />
+      </form>
+      {currentFilters.map(
+        ({ column: col, operation: oper, value: val }, index) => (
+          <div key={ index } data-testid="filter">
+            {`${col} ${oper} ${val}`}
+            <button id={ `${col}` } type="button" onClick={ (e) => deleteFilter(e.target.id) }>
+              X
+            </button>
+          </div>
+        ),
+      )}
+    </div>
   );
 }
 

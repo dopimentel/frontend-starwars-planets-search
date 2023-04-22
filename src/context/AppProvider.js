@@ -53,6 +53,11 @@ function AppProvider({ children }) {
     }
   }, [currentFilters, data]);
 
+  const deleteFilter = (id) => {
+    const newCurrentFilters = currentFilters.filter((filter) => filter.column !== id);
+    setCurrentFilters(newCurrentFilters);
+  };
+
   const values = {
     data,
     planetsFiltered,
@@ -66,6 +71,7 @@ function AppProvider({ children }) {
     setOperation,
     setValue,
     setCurrentFilters,
+    deleteFilter,
   };
 
   return <AppContext.Provider value={ values }>{children}</AppContext.Provider>;
