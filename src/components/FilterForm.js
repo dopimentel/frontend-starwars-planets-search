@@ -36,6 +36,7 @@ function FilterForm() {
       value,
     }]);
     setColumn(columns[1]);
+    setOperation(operation);
     setColumns(columns.filter((elem) => elem !== column));
   };
 
@@ -95,6 +96,7 @@ function FilterForm() {
       <button
         data-testid="button-filter"
         type="submit"
+        disabled={ !columns.length }
       >
         Filtrar
       </button>
