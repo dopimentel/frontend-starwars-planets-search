@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppProvider';
 
 const COLUMNS = [
@@ -25,6 +25,8 @@ function FilterForm() {
     setCurrentFilters,
   } = useContext(AppContext);
 
+  const [columns, setColumns] = useState(COLUMNS);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(`Os valores são: ${column}, ${operation}, ${value}`);
@@ -33,6 +35,7 @@ function FilterForm() {
       operation,
       value,
     }]);
+    setColumns(columns.filter((elem) => elem !== column));
   };
 
   return (
@@ -55,7 +58,7 @@ function FilterForm() {
           value={ column }
           onChange={ (e) => setColumn(e.target.value) }
         >
-          {COLUMNS.map((col) => (
+          {columns.map((col) => (
             <option key={ col } value={ col }>
               {col}
             </option>
