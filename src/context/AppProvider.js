@@ -7,9 +7,9 @@ function AppProvider({ children }) {
   const [data, setData] = useState();
   const [planetsFiltered, setPlanetsFiltered] = useState(data);
   const [filterByName, setFilterByName] = useState('');
-  const [column, setColumn] = useState('');
-  const [operation, setOperation] = useState('');
-  const [value, setValue] = useState('');
+  const [column, setColumn] = useState('population');
+  const [operation, setOperation] = useState('maior que');
+  const [value, setValue] = useState(0);
   const [currentFilter, setCurrentFilter] = useState({
     column: '',
     operation: '',

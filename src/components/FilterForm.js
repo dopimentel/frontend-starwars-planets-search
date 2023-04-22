@@ -49,11 +49,11 @@ function FilterForm() {
       <label>
         Coluna
         <select
+          data-testid="column-filter"
           name="coluna"
           value={ column }
           onChange={ (e) => setColumn(e.target.value) }
         >
-          <option value="">Selecione uma coluna</option>
           {COLUMNS.map((col) => (
             <option key={ col } value={ col }>
               {col}
@@ -65,11 +65,11 @@ function FilterForm() {
       <label>
         Operação
         <select
+          data-testid="comparison-filter"
           name="operad"
           value={ operation }
           onChange={ (e) => setOperation(e.target.value) }
         >
-          <option value="">Selecione uma operação</option>
           {COMPARISON_OPTIONS.map((comparison) => (
             <option key={ comparison } value={ comparison }>
               {comparison}
@@ -81,12 +81,18 @@ function FilterForm() {
       <label>
         Número
         <input
+          data-testid="value-filter"
           type="number"
           value={ value }
           onChange={ (e) => setValue(e.target.value) }
         />
       </label>
-      <button type="submit">Filtrar</button>
+      <button
+        data-testid="button-filter"
+        type="submit"
+      >
+        Filtrar
+      </button>
       <hr />
     </form>
   );
