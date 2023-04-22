@@ -35,6 +35,7 @@ function FilterForm() {
       operation,
       value,
     }]);
+    setColumn(columns[1]);
     setColumns(columns.filter((elem) => elem !== column));
   };
 
