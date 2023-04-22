@@ -10,6 +10,11 @@ function AppProvider({ children }) {
   const [column, setColumn] = useState('');
   const [operation, setOperation] = useState('');
   const [value, setValue] = useState('');
+  const [currentFilter, setCurrentFilter] = useState({
+    column: '',
+    operation: '',
+    value: 0,
+  });
 
   const fetchData = () => {
     fetch('https://swapi.dev/api/planets')
@@ -34,6 +39,24 @@ function AppProvider({ children }) {
     }
   }, [filterByName, data]);
 
+  useEffect(() => {
+    const compareBy = {
+      'maior que': (a, b) => a > b,
+      'menor que': (a, b) => a < b,
+      'igual a': (a, b) => a === b,
+    };
+
+    if (currentFilter.column) {
+      const newPlanetsFiltered = data
+        .filter((planet) => compareBy[currentFilter.operation](
+          Number(planet[currentFilter.column]),
+          Number(currentFilter.value),
+        ));
+
+      setPlanetsFiltered(newPlanetsFiltered);
+    }
+  }, [currentFilter, data]);
+
   const values = {
     data,
     planetsFiltered,
@@ -41,10 +64,12 @@ function AppProvider({ children }) {
     column,
     operation,
     value,
+    currentFilter,
     setFilterByName,
     setColumn,
     setOperation,
     setValue,
+    setCurrentFilter,
   };
 
   return <AppContext.Provider value={ values }>{children}</AppContext.Provider>;
