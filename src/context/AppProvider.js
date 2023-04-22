@@ -10,11 +10,7 @@ function AppProvider({ children }) {
   const [column, setColumn] = useState('population');
   const [operation, setOperation] = useState('maior que');
   const [value, setValue] = useState(0);
-  const [currentFilter, setCurrentFilter] = useState({
-    column: '',
-    operation: '',
-    value: 0,
-  });
+  const [currentFilters, setCurrentFilters] = useState([]);
 
   const fetchData = () => {
     fetch('https://swapi.dev/api/planets')
@@ -46,16 +42,16 @@ function AppProvider({ children }) {
       'igual a': (a, b) => a === b,
     };
 
-    if (currentFilter.column) {
+    if (currentFilters.length > 0 && currentFilters[0].column) {
       const newPlanetsFiltered = data
-        .filter((planet) => compareBy[currentFilter.operation](
-          Number(planet[currentFilter.column]),
-          Number(currentFilter.value),
-        ));
+        .filter((planet) => currentFilters.every((filter) => compareBy[filter.operation](
+          Number(planet[filter.column]),
+          Number(filter.value),
+        )));
 
       setPlanetsFiltered(newPlanetsFiltered);
     }
-  }, [currentFilter, data]);
+  }, [currentFilters, data]);
 
   const values = {
     data,
@@ -64,12 +60,12 @@ function AppProvider({ children }) {
     column,
     operation,
     value,
-    currentFilter,
+    currentFilters,
     setFilterByName,
     setColumn,
     setOperation,
     setValue,
-    setCurrentFilter,
+    setCurrentFilters,
   };
 
   return <AppContext.Provider value={ values }>{children}</AppContext.Provider>;

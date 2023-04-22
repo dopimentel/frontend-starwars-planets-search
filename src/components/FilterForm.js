@@ -17,21 +17,22 @@ function FilterForm() {
     column,
     operation,
     value,
+    currentFilters,
     setFilterByName,
     setColumn,
     setOperation,
     setValue,
-    setCurrentFilter,
+    setCurrentFilters,
   } = useContext(AppContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(`Os valores são: ${column}, ${operation}, ${value}`);
-    setCurrentFilter({
+    setCurrentFilters([...currentFilters, {
       column,
       operation,
       value,
-    });
+    }]);
   };
 
   return (
