@@ -5,6 +5,7 @@ export const AppContext = createContext([]);
 
 function AppProvider({ children }) {
   const [data, setData] = useState();
+  const [planetsFiltered, setPlanetsFiltered] = useState(data);
   const [filterByName, setFilterByName] = useState('');
   const [column, setColumn] = useState('');
   const [operation, setOperation] = useState('');
@@ -23,8 +24,19 @@ function AppProvider({ children }) {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    if (data && data.length > 0) {
+      const newNameFiltered = data
+        .filter((planet) => planet.name.toLowerCase()
+          .includes(filterByName.toLowerCase()));
+
+      setPlanetsFiltered(newNameFiltered);
+    }
+  }, [filterByName, data]);
+
   const values = {
     data,
+    planetsFiltered,
     filterByName,
     column,
     operation,

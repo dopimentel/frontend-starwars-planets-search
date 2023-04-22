@@ -2,13 +2,13 @@ import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../context/AppProvider';
 
 export default function Table() {
-  const { data } = useContext(AppContext);
+  const { planetsFiltered } = useContext(AppContext);
   const [headers, setHeaders] = useState([]);
   useEffect(() => {
-    if (data && data.length > 0) {
-      setHeaders(Object.keys(data[0]));
+    if (planetsFiltered && planetsFiltered.length > 0) {
+      setHeaders(Object.keys(planetsFiltered[0]));
     }
-  }, [data]);
+  }, [planetsFiltered]);
 
   return (
     <table>
@@ -20,7 +20,7 @@ export default function Table() {
         </tr>
       </thead>
       <tbody>
-        {data && data.map((planet, index) => (
+        {planetsFiltered && planetsFiltered.map((planet, index) => (
           <tr key={ index }>
             {headers.map((header) => (
               <td key={ header }>{planet[header]}</td>
