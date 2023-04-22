@@ -45,7 +45,7 @@ function FilterForm() {
     console.log('clicou');
     console.log(e.target.id);
     deleteFilter(e.target.id);
-    // currentFilters.length > 0 ? '' : '';
+    setColumns([...columns, e.target.id]);
   };
 
   return (
@@ -109,6 +109,19 @@ function FilterForm() {
         >
           Filtrar
         </button>
+
+        <button
+          data-testid="button-remove-filters"
+          type="button"
+          disabled={ !currentFilters.length }
+          onClick={ () => {
+            setCurrentFilters([]);
+            setColumns(COLUMNS);
+          } }
+        >
+          Remover filtros
+        </button>
+
         <hr />
       </form>
       {currentFilters.map(
