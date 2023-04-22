@@ -41,10 +41,12 @@ function FilterForm() {
     setColumns(columns.filter((elem) => elem !== column));
   };
 
-  // const handleClick = (e) => {
-  //   console.log('clicou');
-  //   console.log(e.target.id);
-  // };
+  const handleClick = (e) => {
+    console.log('clicou');
+    console.log(e.target.id);
+    deleteFilter(e.target.id);
+    // currentFilters.length > 0 ? '' : '';
+  };
 
   return (
     <div>
@@ -113,7 +115,7 @@ function FilterForm() {
         ({ column: col, operation: oper, value: val }, index) => (
           <div key={ index } data-testid="filter">
             {`${col} ${oper} ${val}`}
-            <button id={ `${col}` } type="button" onClick={ (e) => deleteFilter(e.target.id) }>
+            <button id={ `${col}` } type="button" onClick={ (e) => handleClick(e) }>
               X
             </button>
           </div>

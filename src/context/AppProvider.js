@@ -50,6 +50,8 @@ function AppProvider({ children }) {
         )));
 
       setPlanetsFiltered(newPlanetsFiltered);
+    } else {
+      setPlanetsFiltered(data);
     }
   }, [currentFilters, data]);
 
