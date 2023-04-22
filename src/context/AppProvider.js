@@ -17,7 +17,7 @@ function AppProvider({ children }) {
       .then((response) => response.json())
       .then((dataApi) => {
         dataApi.results.forEach((planet) => delete planet.residents);
-        console.log(dataApi.results);
+        // console.log(dataApi.results);
         setData(dataApi.results);
       });
   };
