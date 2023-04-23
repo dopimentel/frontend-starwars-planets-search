@@ -24,56 +24,37 @@ describe('App forms filters testes', () => {
     const message = screen.getByText(/Hello, App!/i);
     expect(message).toBeInTheDocument();
   });
-  
-  // it("", async () => {
-  //   render(<App />);
-  //   const nameSeach = screen.getByRole("textbox", {
-  //     name: /filtrar por nome:/i,
-  //   });
-  //   userEvent.type(nameSeach, /tatooine/i);
-  //   await waitFor( async () => {
-  //     const planets = await screen.findAllByRole('cell');
-  //   expect(planets.length).toBe(1);
-  //   })
 
-  // });
-
-  it("test if Alderaan is not showed when Tatooine is typed", async () => {
-    const nameSeach = screen.getByRole("textbox", {
+  it("test if Alderaan is not showed when Tatooine is typed", () => {
+    const nameInput = screen.getByRole("textbox", {
       name: /filtrar por nome:/i,
     });
-    userEvent.type(nameSeach, 'Tatooine');
-   
-    const planet = await screen.findByText(/Tatooine/i);
-    expect(planet).toBeInTheDocument();
-    // const otherPlanet = screen.queryByText(/alderaan/i);
-    // expect(otherPlanet).toBeNull();
-    // const planets = await screen.findAllByRole("cell");
-    // expect(planets.length).toBe();
+    const planetTatooine = screen.getByText(/Tatooine/i);
+    expect(planetTatooine).toBeInTheDocument();
+    const planetAlderaan = screen.queryByText(/alderaan/i);
+    expect(planetAlderaan).toBeInTheDocument();
+
+    userEvent.type(nameInput, 'Tatooine');
+    expect(planetAlderaan).not.toBeInTheDocument();
  
   });
 
-  it("test if Alderaan is not showed when Tatooine is typed", async () => {
+  it("test if the delete filter buttons are showed when the filters are used", async () => {
+
+    const filterBtn = screen.getByRole("button", { name: /filtrar/i });
+    userEvent.click(filterBtn);
+    userEvent.click(filterBtn);
+    const deleteBtns = screen.getAllByRole("button", { name: /x/i });
+    expect(deleteBtns.length).toBe(2);
+  })
+
+  it("When it is filtered by diameter bigger then 10000 Bespin e showed. When operation is less then 10000 Bespin is not showed ", async () => {
     const column = screen.getByRole("combobox", { name: /coluna/i });
-    // userEvent.type(nameSeach, "Tatooine");
-    // waitFor(async () => {
-    //   const planet = await screen.findByText(/Tatooine/i);
-    //   expect(planet).toBeInTheDocument();
-    //   const otherPlanet = screen.queryByText(/alderaan/i);
-    //   expect(otherPlanet).toBeNull();
-    // });
+    userEvent.selectOptions(column, "diameter");
+    const numberInput = screen.getByRole("spinbutton", { name: /número/i });
+    userEvent.type(numberInput, '10000')
+    const planeBespin = screen.getByRole("cell", { name: /bespin/i });
+    expect(planeBespin).toBeInTheDocument();
+    
   });
-
-
-
-  // it("test if Tatooine is showed on the screen ", async () => {
-  //   render(<App />)
-  //   const nameSeach = screen.getByRole("textbox", {
-  //     name: /filtrar por nome:/i,
-  //   });
-  //   waitFor(async () => {
-  //     const planet = await screen.findByText(/Tatooine/i);
-  //     expect(planet).toBeInTheDocument();
-  //   });
-  // });
 })
