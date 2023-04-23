@@ -6,19 +6,19 @@ import AppProvider from "../context/AppProvider";
 import fetch from "../../cypress/mocks/fetch.js";
 import { act } from "react-dom/test-utils";
 
-
-describe('Table component tests', () => {
+describe("Table component tests", () => {
   beforeEach(async () => {
     jest.spyOn(global, "fetch");
     global.fetch.mockImplementation(fetch);
-    await act(() => {  //async
+    await act(() => {
+      //async
       render(
         <AppProvider>
           <Table />
         </AppProvider>
       );
-    })
-  })
+    });
+  });
 
   it("test if the API is called", async () => {
     expect(global.fetch).toBeCalledTimes(1);
@@ -29,24 +29,18 @@ describe('Table component tests', () => {
     expect(global.fetch).toBeCalledWith("https://swapi.dev/api/planets");
   });
 
-    it("test if the Table`s lines` number is equal to the planets` quantity from API response plus a line of the header", async () => {
-      const allPlanets = screen.getAllByRole("row");
-      await waitFor(async () => {
-        const results = await fetch("https://swapi.dev/api/planets")
-          .then((response) => response.json())
-          .then((data) => data.results);
-        expect(allPlanets).toHaveLength(results.length + 1);
-
-      })
+  it("test if the Table`s lines` number is equal to the planets` quantity from API response plus a line of the header", async () => {
+    const allPlanets = screen.getAllByRole("row");
+    await waitFor(async () => {
+      const results = await fetch("https://swapi.dev/api/planets")
+        .then((response) => response.json())
+        .then((data) => data.results);
+      expect(allPlanets).toHaveLength(results.length + 1);
     });
-
-  it("test if Tatooine is showed on the screen ", async () => {
-      const planet = await screen.findByText(/Tatooine/i);
-      expect(planet).toBeInTheDocument();
-      
-
   });
 
-
-})
-
+  it("test if Tatooine is showed on the screen ", async () => {
+    const planet = await screen.findByText(/Tatooine/i);
+    expect(planet).toBeInTheDocument();
+  });
+});
