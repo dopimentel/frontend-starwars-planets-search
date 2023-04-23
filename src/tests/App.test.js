@@ -36,6 +36,8 @@ describe('App forms filters testes', () => {
     expect(allPlanets).toHaveLength(11);
     userEvent.type(nameInput, 'Tatooine');
     expect(planetAlderaan).not.toBeInTheDocument();
+    const newAllPlanets = screen.getAllByRole("row");
+    expect(newAllPlanets).toHaveLength(2);
 
     
     // const otherPlanet = screen.queryByText(/alderaan/i);
