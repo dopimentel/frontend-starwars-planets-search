@@ -38,12 +38,6 @@ describe('App forms filters testes', () => {
     expect(planetAlderaan).not.toBeInTheDocument();
     const newAllPlanets = screen.getAllByRole("row");
     expect(newAllPlanets).toHaveLength(2);
-
-    
-    // const otherPlanet = screen.queryByText(/alderaan/i);
-    // expect(otherPlanet).toBeNull();
-    // const planets = await screen.findAllByRole("cell");
-    // expect(planets.length).toBe();
  
   });
 
