@@ -19,7 +19,7 @@ describe('Table component tests', () => {
       );
     })
   })
-  
+
   it("test if the API is called", async () => {
     expect(global.fetch).toBeCalledTimes(1);
   });
@@ -30,10 +30,10 @@ describe('Table component tests', () => {
   });
 
   it("test if Tatooine is showed on the screen ", async () => {
-    waitFor(async () => {
       const planet = await screen.findByText(/Tatooine/i);
       expect(planet).toBeInTheDocument();
-    });
+      
+
   });
 
 
