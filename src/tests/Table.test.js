@@ -2,14 +2,14 @@ import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import Table from "../components/Table";
 import AppProvider from "../context/AppProvider";
-
-import fetch from "../../cypress/mocks/fetch.js";
 import { act } from "react-dom/test-utils";
+
+import mockFetch from "../../cypress/mocks/fetch.js";
 
 describe("Table component tests", () => {
   beforeEach(async () => {
     jest.spyOn(global, "fetch");
-    global.fetch.mockImplementation(fetch);
+    global.fetch.mockImplementation(mockFetch);
     await act(() => {
       //async
       render(
@@ -32,7 +32,7 @@ describe("Table component tests", () => {
   it("test if the Table`s lines` number is equal to the planets` quantity from API response plus a line of the header", async () => {
     const allPlanets = screen.getAllByRole("row");
     await waitFor(async () => {
-      const results = await fetch("https://swapi.dev/api/planets")
+      const results = await mockFetch()
         .then((response) => response.json())
         .then((data) => data.results);
       expect(allPlanets).toHaveLength(results.length + 1);
