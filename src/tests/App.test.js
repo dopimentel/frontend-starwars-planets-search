@@ -1,5 +1,5 @@
 import React from 'react';
-import { queryAllByTestId, queryByTestId, render, screen, waitFor } from '@testing-library/react';
+import { getAllByRole, queryAllByTestId, queryByTestId, render, screen, waitFor } from '@testing-library/react';
 import App from '../App';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react-dom/test-utils';
@@ -24,7 +24,7 @@ describe('App forms filters testes', () => {
     expect(message).toBeInTheDocument();
   });
 
-  it("test if Alderaan is not showed when Tatooine is typed", () => {
+  it("Test filter by name. It test if Alderaan is not showed when Tatooine is typed", () => {
     const nameInput = screen.getByRole("textbox", {
       name: /filtrar por nome:/i,
     });
@@ -32,7 +32,8 @@ describe('App forms filters testes', () => {
     expect(planetTatooine).toBeInTheDocument();
     const planetAlderaan = screen.queryByText(/alderaan/i);
     expect(planetAlderaan).toBeInTheDocument();
-
+    const allPlanets = screen.getAllByRole('row')
+    expect(allPlanets).toHaveLength(11);
     userEvent.type(nameInput, 'Tatooine');
     expect(planetAlderaan).not.toBeInTheDocument();
 
