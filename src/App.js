@@ -8,8 +8,10 @@ function App() {
     <AppProvider>
       <main>
         <h1>Star Wars Project</h1>
-        <FilterForm />
-        <Table />
+        <section>
+          <FilterForm />
+          <Table />
+        </section>
       </main>
     </AppProvider>
   );

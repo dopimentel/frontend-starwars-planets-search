@@ -52,7 +52,7 @@ function FilterForm() {
   };
 
   return (
-    <section>
+    <>
       <form onSubmit={ handleSubmit }>
         <hr />
         <label htmlFor="inputName">Filtrar por nome:</label>
@@ -64,13 +64,14 @@ function FilterForm() {
           onChange={ (e) => setFilterByName(e.target.value) }
         />
         <br />
-        <label>
+        <label htmlFor="column-filter">
           Coluna
           <select
             data-testid="column-filter"
             name="coluna"
             value={ column }
             onChange={ (e) => setColumn(e.target.value) }
+            id="column-filter"
           >
             {columns.map((col) => (
               <option key={ col } value={ col }>
@@ -80,13 +81,14 @@ function FilterForm() {
           </select>
         </label>
 
-        <label>
+        <label htmlFor="comparison-filter">
           Operação
           <select
             data-testid="comparison-filter"
             name="operad"
             value={ operation }
             onChange={ (e) => setOperation(e.target.value) }
+            id="comparison-filter"
           >
             {COMPARISON_OPTIONS.map((comparison) => (
               <option key={ comparison } value={ comparison }>
@@ -96,13 +98,14 @@ function FilterForm() {
           </select>
         </label>
 
-        <label>
+        <label htmlFor="value-filter">
           Número
           <input
             data-testid="value-filter"
             type="number"
             value={ value }
             onChange={ (e) => setValue(e.target.value) }
+            id="value-filter"
           />
         </label>
         <button
@@ -129,8 +132,10 @@ function FilterForm() {
       </form>
       <ul>
         <h2>Filtros</h2>
-        {!currentFilters.length ? <p>Nenhum filtro aplicado</p>
-          : currentFilters.map(
+        {!currentFilters.length ? (
+          <p>Nenhum filtro aplicado</p>
+        ) : (
+          currentFilters.map(
             ({ column: col, operation: oper, value: val }, index) => (
               <li key={ index } data-testid="filter">
                 {`${col} ${oper} ${val}`}
@@ -143,9 +148,10 @@ function FilterForm() {
                 </button>
               </li>
             ),
-          )}
+          )
+        )}
       </ul>
-    </section>
+    </>
   );
 }
 
