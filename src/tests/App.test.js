@@ -28,7 +28,7 @@ describe("App forms filters testes", () => {
   });
 
   it("Title test", () => {
-    const message = screen.getByText(/Hello, App!/i);
+    const message = screen.getByText(/Star Wars Project/i);
     expect(message).toBeInTheDocument();
   });
 

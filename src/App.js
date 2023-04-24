@@ -6,11 +6,11 @@ import AppProvider from './context/AppProvider';
 function App() {
   return (
     <AppProvider>
-      <div>
-        <span>Hello, App!</span>
+      <main>
+        <h1>Star Wars Project</h1>
         <FilterForm />
         <Table />
-      </div>
+      </main>
     </AppProvider>
   );
 }

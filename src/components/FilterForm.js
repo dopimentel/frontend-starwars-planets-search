@@ -31,11 +31,14 @@ function FilterForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(`Os valores são: ${column}, ${operation}, ${value}`);
-    setCurrentFilters([...currentFilters, {
-      column,
-      operation,
-      value,
-    }]);
+    setCurrentFilters([
+      ...currentFilters,
+      {
+        column,
+        operation,
+        value,
+      },
+    ]);
     setColumn(columns[1]);
     setOperation(operation);
     setColumns(columns.filter((elem) => elem !== column));
@@ -49,7 +52,7 @@ function FilterForm() {
   };
 
   return (
-    <div>
+    <section>
       <form onSubmit={ handleSubmit }>
         <hr />
         <label htmlFor="inputName">Filtrar por nome:</label>
@@ -109,7 +112,7 @@ function FilterForm() {
         >
           Filtrar
         </button>
-
+        <br />
         <button
           data-testid="button-remove-filters"
           type="button"
@@ -125,22 +128,24 @@ function FilterForm() {
         <hr />
       </form>
       <ul>
-        {currentFilters.map(
-          ({ column: col, operation: oper, value: val }, index) => (
-            <li key={ index } data-testid="filter">
-              {`${col} ${oper} ${val}`}
-              <button
-                id={ `${col}` }
-                type="button"
-                onClick={ (e) => handleClick(e) }
-              >
-                X
-              </button>
-            </li>
-          ),
-        )}
+        <h2>Filtros</h2>
+        {!currentFilters.length ? <p>Nenhum filtro aplicado</p>
+          : currentFilters.map(
+            ({ column: col, operation: oper, value: val }, index) => (
+              <li key={ index } data-testid="filter">
+                {`${col} ${oper} ${val}`}
+                <button
+                  id={ `${col}` }
+                  type="button"
+                  onClick={ (e) => handleClick(e) }
+                >
+                  X
+                </button>
+              </li>
+            ),
+          )}
       </ul>
-    </div>
+    </section>
   );
 }
 
