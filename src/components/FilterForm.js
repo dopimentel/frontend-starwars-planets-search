@@ -39,16 +39,19 @@ function FilterForm() {
         value,
       },
     ]);
-    setColumn(columns[1]);
+    if (columns.length > 0) setColumn(columns[1]);
     setOperation(operation);
     setColumns(columns.filter((elem) => elem !== column));
+    if (filterByName.length > 0) setFilterByName('');
   };
 
   const handleClick = (e) => {
-    console.log('clicou');
-    console.log(e.target.id);
+    // console.log('clicou');
+    // console.log(e.target);
     deleteFilter(e.target.id);
     setColumns([...columns, e.target.id]);
+    setColumn(columns[0] || e.target.id);
+    if (filterByName.length > 0) setFilterByName('');
   };
 
   return (
@@ -111,11 +114,12 @@ function FilterForm() {
         <button
           data-testid="button-filter"
           type="submit"
-          disabled={ !columns.length }
+          disabled={ columns.length === 0 }
         >
           Filtrar
         </button>
         <br />
+
         <button
           data-testid="button-remove-filters"
           type="button"
@@ -123,6 +127,7 @@ function FilterForm() {
           onClick={ () => {
             setCurrentFilters([]);
             setColumns(COLUMNS);
+            setColumn('population');
           } }
         >
           Remover filtros
