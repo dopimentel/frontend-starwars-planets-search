@@ -10,22 +10,22 @@ const COLUMNS = [
 ];
 
 function SortForm() {
-  const { sorter, setSorter } = useContext(AppContext);
-  const { column, order } = sorter;
+  const { order, setOrder } = useContext(AppContext);
+  const { column, sort } = order;
 
   // const [columns, setColumns] = useState(COLUMNS);
 
   const handleSortChange = (e) => {
-    setSorter({ ...sorter, column: e });
+    setOrder({ ...order, column: e });
   };
 
   const handleOrderChange = (e) => {
-    setSorter({ ...sorter, order: e.target.value });
+    setOrder({ ...order, sort: e.target.value });
   };
 
   const handleSortSubmit = (e) => {
     e.preventDefault();
-    console.log(`Ordenar por ${column} em ordem ${order}`);
+    console.log(`Ordenar por ${column} em ordem ${sort}`);
     // Lógica para aplicar a ordenação
   };
 
@@ -52,16 +52,17 @@ function SortForm() {
           Ordem:
           <select
             name="sort-order"
-            value={ order }
+            value={ sort }
             onChange={ (e) => handleOrderChange(e) }
             id="sort-order"
           >
-            <option value="Asc">Ascendente</option>
-            <option value="Desc">Descendente</option>
+            <option data-testid="column-sort-input-asc" value="ASC">Ascendente</option>
+            <option data-testid="column-sort-input-desc" value="DESC">Descendente</option>
           </select>
         </label>
 
         <button
+          data-testid="column-sort-button"
           type="submit"
           // disabled={ columns.length === 0 }
         >
