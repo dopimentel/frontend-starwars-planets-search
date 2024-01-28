@@ -11,6 +11,9 @@ function AppProvider({ children }) {
   const [operation, setOperation] = useState('maior que');
   const [value, setValue] = useState(0);
   const [currentFilters, setCurrentFilters] = useState([]);
+  // const [order, setOrder] = useState('ASC');
+  // const [columnSort, setColumnSort] = useState('population');
+  const [sorter, setSorter] = useState({ column: 'population', order: 'ASC' });
 
   const fetchData = () => {
     fetch('https://swapi.dev/api/planets')
@@ -68,11 +71,17 @@ function AppProvider({ children }) {
     operation,
     value,
     currentFilters,
+    sorter,
+    // order,
+    // columnSort,
     setFilterByName,
     setColumn,
     setOperation,
     setValue,
     setCurrentFilters,
+    setSorter,
+    // setOrder,
+    // setColumnSort,
     deleteFilter,
   };
 
