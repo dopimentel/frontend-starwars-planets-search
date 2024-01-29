@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +10,55 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+} */
+
+:root {
+  --primary-color: #1a1a1a;
+  --secondary-color: #f2f2f2;
+  --background: #f2f2f2;
 }
+  /* --accent-color: #ff5a5f;
+  --text-color: #484848;
+  --text-color-light: #767676;
+  --text-color-lighter: #a8a8a8;
+  --text-color-lightest: #d8d8d8;
+  --text-color-white: #ffffff;
+  --text-color-black: #000000;
+  --text-color-accent: #ff5a5f;
+  --text-color-accent-light: #ff7b7f;
+  --text-color-accent-lighter: #ff9c9f;
+  --text-color-accent-lightest: #ffbdbf;
+  --text-color-accent-dark: #e55459;
+  --text-color-accent-darker: #cc4d52;
+  --text-color-accent-darkest: #b3464b;
+  --text-color-success: #00a699;
+  --text-color-success-light: #00bfad;
+  --text-color-success-lighter: #00d9bd;
+  --text-color-success-lightest: #00f2ce;
+  --text-color-success-dark: #00968b;
+  --text-color-success-darker: #00827e;
+  --text-color-success-darkest: #006d70;
+  --text-color-warning: #fcb900;
+  --text-color-warning-light: #ffcb1f;
+  --text-color-warning-lighter: #ffdc4d;
+  --text-color-warning-lightest: #ffed7a;
+  --text-color-warning-dark: #e5a400;
+  --text-color-warning-darker: #cc9300;
+  --text-color-warning-darkest: #b37f00;
+  --text-color-error: #ff5a5f;
+  --text-color-error-light: #ff7b7f;
+  --text-color-error-lighter: #ff9c9f;
+  --text-color-error-lightest: #ffbdbf;
+  --text-color-error-dark: #e55459;
+  --text-color-error-darker: #cc4d52;
+  --text-color-error-darkest: #b3464b;
+  --text-color-info: #008489; */
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1rem;
+}  

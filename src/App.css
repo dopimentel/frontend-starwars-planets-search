@@ -22,7 +22,17 @@
   flex-direction: column;
   font-size: calc(10px + 2vmin);
   justify-content: center;
-  min-height: 100vh;
+  min-height: 15vh;
+}
+
+.App-title {
+  opacity: 0;
+  transition: opacity 3s ease-in-out; /* Adicionando uma transição de 1 segundo */
+}
+
+/* Adicionando a classe .visible para mostrar o título gradualmente */
+.App-title.visible {
+  opacity: 1;
 }
 
 .App-link {
