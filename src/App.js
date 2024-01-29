@@ -1,32 +1,31 @@
-import './App.css';
 import { ReactTyped } from 'react-typed';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import styles from './App.module.css';
 import FilterForm from './components/FilterForm';
 import Table from './components/Table';
 import AppProvider from './context/AppProvider';
-import SorterForm from './components/SorterForm'; // Import the SorterForm component
+import SorterForm from './components/SorterForm';
 
 function App() {
+  const [shrinkTitle, setShrinkTitle] = useState(false);
   const timeToShrink = 3000;
   useEffect(() => {
     const timer = setTimeout(() => {
-      const header = document.querySelector('.App-title');
-      if (header) {
-        header.classList.add('shrink');
-      }
-    }, timeToShrink); // 3000 milissegundos = 3 segundos
+      setShrinkTitle(true);
+    }, timeToShrink);
 
-    return () => clearTimeout(timer); // Limpar o timer se o componente for desmontado
+    return () => clearTimeout(timer);
   }, []);
+
   return (
     <AppProvider>
-      <main className="App">
+      <main className={ styles.container }>
         <ReactTyped
-          className="App-title"
+          className={ `${styles.title} ${shrinkTitle ? styles.shrink : ''}` }
           strings={ ['STAR WARS PLANETS'] }
           typeSpeed={ 200 }
         />
-        <header className="App-header">
+        <header className={ styles.header }>
           <FilterForm />
           <SorterForm />
         </header>
