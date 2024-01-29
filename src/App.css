@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Orbit&family=Orbitron:wght@400..900&display=swap') ;
+
 .App {
+  display: flex;
+  flex-direction: column;
   text-align: center;
 }
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -12,7 +16,8 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
+
 
 .App-header {
   align-items: center;
@@ -21,10 +26,7 @@
   display: flex;
   flex-direction: column;
   font-size: calc(10px + 2vmin);
-  height: 100vh;
   justify-content: center;
-  transition: height 3s ease-in-out; /* Adicionando uma transição de 1 segundo */
-
 }
 
 .App-header.shrink {
@@ -32,14 +34,30 @@
 }
 
 .App-title {
-  opacity: 0;
-  transition: opacity 3s ease-in-out; /* Adicionando uma transição de 1 segundo */
+  align-items: center;
+  background-color: black;
+  color: white;
+  display: flex;
+  font-family: Orbit , sans-serif;
+  font-size: calc(10px + 2vmin);
+  height: 100vh;
+  justify-content: center;
+  transition: height 3s ease-in-out; /* Adicionando uma transição de 3 segundo */
 }
 
-/* Adicionando a classe .visible para mostrar o título gradualmente */
+.App-title.shrink {
+  height: 10vh;
+}
+
+/* .App-title {
+  height: 100vh;
+  opacity: 0;
+  transition: opacity 3s ease-in-out;
+}
+
 .App-title.visible {
   opacity: 1;
-}
+} */
 
 .App-link {
   color: #61dafb;

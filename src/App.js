@@ -10,7 +10,7 @@ function App() {
   const timeToShrink = 3000;
   useEffect(() => {
     const timer = setTimeout(() => {
-      const header = document.querySelector('.App-header');
+      const header = document.querySelector('.App-title');
       if (header) {
         header.classList.add('shrink');
       }
@@ -21,12 +21,17 @@ function App() {
   return (
     <AppProvider>
       <main className="App">
+        <ReactTyped
+          className="App-title"
+          strings={ ['STAR WARS PLANETS'] }
+          typeSpeed={ 200 }
+        />
         <header className="App-header">
-          <ReactTyped strings={ ['Star Wars Planets'] } typeSpeed={ 200 } />
-        </header>
-        <section>
           <FilterForm />
           <SorterForm />
+        </header>
+        <section>
+          <h1> PLANETS</h1>
           <Table />
         </section>
       </main>
