@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppProvider';
+import styles from './Form.module.css';
 
 const COLUMNS = [
   'population',
@@ -60,7 +61,7 @@ function SortForm() {
 
   return (
     <>
-      <form onSubmit={ handleSortSubmit }>
+      <form onSubmit={ handleSortSubmit } className={ styles.container }>
         <label htmlFor="sort-column">
           Ordenar por:
           <select

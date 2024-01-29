@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppProvider';
+import styles from './Form.module.css';
 
 const COLUMNS = [
   'population',
@@ -56,16 +57,7 @@ function FilterForm() {
 
   return (
     <>
-      <form onSubmit={ handleSubmit }>
-        <hr />
-        <label htmlFor="inputName">Filtrar por nome:</label>
-        <input
-          data-testid="name-filter"
-          type="text"
-          id="inputName"
-          value={ filterByName }
-          onChange={ (e) => setFilterByName(e.target.value) }
-        />
+      <form onSubmit={ handleSubmit } className={ styles.container }>
         <br />
         <label htmlFor="column-filter">
           Coluna

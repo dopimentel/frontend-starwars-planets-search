@@ -5,6 +5,7 @@ import FilterForm from './components/FilterForm';
 import Table from './components/Table';
 import AppProvider from './context/AppProvider';
 import SorterForm from './components/SorterForm';
+import FilterByName from './components/FilterByName';
 
 function App() {
   const [shrinkTitle, setShrinkTitle] = useState(false);
@@ -26,6 +27,7 @@ function App() {
           typeSpeed={ 200 }
         />
         <header className={ styles.header }>
+          <FilterByName />
           <FilterForm />
           <SorterForm />
         </header>
