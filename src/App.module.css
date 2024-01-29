@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Orbit&family=Orbitron:wght@400..900&display=swap') ;
+
+.container {
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  align-items: center;
+  background-color: black;
+  color: white;
+  display: flex;
+  font-family: Orbit , sans-serif;
+  font-size: calc(10vh + 2vmin);
+  height: 100vh;
+  justify-content: center;
+  transition: height 3s ease-in-out , font-size 3s ease-in-out;
+}
+
+.title.shrink {
+  font-size: calc(2vh + 2vmin);
+  height: 10vh;
+}
+
+.header {
+  align-items: center;
+  background-color: #282c34;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  font-size: calc(10px + 2vmin);
+  justify-content: center;
+}
+
+.forms {
+  align-items: center;
+  background-color: #282c34;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-family: Anton , sans-serif;
+  font-size: calc(10px + 2vmin);
+  justify-content: center;
+}

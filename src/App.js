@@ -6,6 +6,7 @@ import Table from './components/Table';
 import AppProvider from './context/AppProvider';
 import SorterForm from './components/SorterForm';
 import FilterByName from './components/FilterByName';
+import AppliedFilters from './components/AppliedFilters';
 
 function App() {
   const [shrinkTitle, setShrinkTitle] = useState(false);
@@ -31,6 +32,9 @@ function App() {
           <FilterForm />
           <SorterForm />
         </header>
+        <section>
+          <AppliedFilters />
+        </section>
         <section>
           <h1> PLANETS</h1>
           <Table />

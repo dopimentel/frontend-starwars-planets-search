@@ -2,6 +2,13 @@ import { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 export const AppContext = createContext([]);
+const COLUMNS = [
+  'population',
+  'orbital_period',
+  'diameter',
+  'rotation_period',
+  'surface_water',
+];
 
 function AppProvider({ children }) {
   const [data, setData] = useState();
@@ -14,6 +21,7 @@ function AppProvider({ children }) {
   // const [order, setOrder] = useState('ASC');
   // const [columnSort, setColumnSort] = useState('population');
   const [order, setOrder] = useState({ column: 'population', sort: 'ASC' });
+  const [columns, setColumns] = useState(COLUMNS);
 
   const fetchData = () => {
     fetch('https://swapi.dev/api/planets')
@@ -68,12 +76,14 @@ function AppProvider({ children }) {
     planetsFiltered,
     filterByName,
     column,
+    columns,
     operation,
     value,
     currentFilters,
     order,
     setFilterByName,
     setColumn,
+    setColumns,
     setOperation,
     setValue,
     setCurrentFilters,
