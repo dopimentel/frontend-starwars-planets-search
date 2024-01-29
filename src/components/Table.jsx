@@ -23,7 +23,12 @@ export default function Table() {
         {planetsFiltered && planetsFiltered.map((planet, index) => (
           <tr key={ index }>
             {headers.map((header) => (
-              <td key={ header }>{planet[header]}</td>
+              <td
+                key={ header }
+                data-testid={ header === 'name' ? 'planet-name' : undefined }
+              >
+                {planet[header]}
+              </td>
             ))}
           </tr>
         ))}

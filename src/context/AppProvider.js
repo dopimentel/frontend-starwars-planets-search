@@ -79,6 +79,7 @@ function AppProvider({ children }) {
     setCurrentFilters,
     setOrder,
     deleteFilter,
+    setPlanetsFiltered,
   };
 
   return <AppContext.Provider value={ values }>{children}</AppContext.Provider>;

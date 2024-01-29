@@ -10,10 +10,13 @@ const COLUMNS = [
 ];
 
 function SortForm() {
-  const { order, setOrder } = useContext(AppContext);
+  const {
+    order,
+    setOrder,
+    planetsFiltered,
+    setPlanetsFiltered,
+  } = useContext(AppContext);
   const { column, sort } = order;
-
-  // const [columns, setColumns] = useState(COLUMNS);
 
   const handleSortChange = (e) => {
     setOrder({ ...order, column: e });
@@ -23,10 +26,36 @@ function SortForm() {
     setOrder({ ...order, sort: e.target.value });
   };
 
+  const sortPlanets = (planets) => {
+    const change = 1;
+    const keep = -1;
+    const sortedPlanets = planets.slice().sort((a, b) => {
+      const valueA = a[column];
+      const valueB = b[column];
+
+      if (valueA === 'unknown' && valueB !== 'unknown') {
+        return change;
+      } if (valueA !== 'unknown' && valueB === 'unknown') {
+        return keep;
+      }
+      const numValueA = Number(valueA) || Infinity;
+      const numValueB = Number(valueB) || Infinity;
+
+      if (sort === 'ASC') {
+        return numValueA - numValueB;
+      }
+
+      return numValueB - numValueA;
+    });
+
+    setPlanetsFiltered(sortedPlanets);
+  };
+
   const handleSortSubmit = (e) => {
     e.preventDefault();
-    console.log(`Ordenar por ${column} em ordem ${sort}`);
-    // Lógica para aplicar a ordenação
+    // console.log(`Ordenar por ${column} em ordem ${sort}`);
+
+    sortPlanets(planetsFiltered);
   };
 
   return (
@@ -39,6 +68,7 @@ function SortForm() {
             value={ column }
             onChange={ (e) => handleSortChange(e.target.value) }
             id="sort-column"
+            data-testid="column-sort"
           >
             {COLUMNS.map((col) => (
               <option key={ col } value={ col }>
@@ -48,17 +78,28 @@ function SortForm() {
           </select>
         </label>
 
-        <label htmlFor="sort-order">
+        <label>
           Ordem:
-          <select
+          <input
+            type="radio"
             name="sort-order"
-            value={ sort }
+            value="ASC"
+            checked={ sort === 'ASC' }
             onChange={ (e) => handleOrderChange(e) }
-            id="sort-order"
-          >
-            <option data-testid="column-sort-input-asc" value="ASC">Ascendente</option>
-            <option data-testid="column-sort-input-desc" value="DESC">Descendente</option>
-          </select>
+            data-testid="column-sort-input-asc"
+          />
+          Ascendente
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="sort-order"
+            value="DESC"
+            checked={ sort === 'DESC' }
+            onChange={ (e) => handleOrderChange(e) }
+            data-testid="column-sort-input-desc"
+          />
+          Descendente
         </label>
 
         <button
