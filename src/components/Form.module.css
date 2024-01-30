@@ -2,6 +2,7 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
+  max-width: 50%;
 }
 
 .formName {
@@ -9,4 +10,18 @@
   margin-top: 1rem;
   text-align: center;
   width: 100%;
+}
+
+input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.5rem;
+  width: 35%;
+}
+
+select {
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  padding: 0.5rem;
+  width: 45%;
 }

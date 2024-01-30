@@ -36,7 +36,7 @@
   min-height: 30vh;
 }
 
-.forms {
+/* .forms {
   align-items: center;
   background-color: #282c34;
   color: white;
@@ -45,7 +45,7 @@
   font-family: Anton , sans-serif;
   font-size: calc(10px + 2vmin);
   justify-content: center;
-}
+} */
 
 .table {
   background-color: grey;

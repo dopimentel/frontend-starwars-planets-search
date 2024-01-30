@@ -8,11 +8,12 @@ ul, ol {
 
 li {
   align-items: center;
+  color: aliceblue;
   display: flex;
   font-size: 1.2rem;
-  margin: 0;
+  margin-bottom: 5px;
   padding: 0;
-  width: 30vh;
+  width: 40vh;
 }
 
 .button {
