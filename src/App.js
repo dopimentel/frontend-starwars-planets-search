@@ -35,8 +35,7 @@ function App() {
         <section>
           <AppliedFilters />
         </section>
-        <section>
-          <h1> PLANETS</h1>
+        <section className={ styles.table }>
           <Table />
         </section>
       </main>

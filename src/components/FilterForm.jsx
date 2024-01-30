@@ -114,7 +114,6 @@ function FilterForm() {
         Remover filtros
       </button>
 
-      <hr />
     </form>
 
   );

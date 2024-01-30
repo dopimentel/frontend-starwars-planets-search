@@ -72,12 +72,13 @@ button {
   width: 30%;
 
   /* COLORAÇÃO */
-  background-color: var(--blue-300);
+  background-color: gray;
   color: var(--white);
 
   /* ESPACAMENTO */
   padding: 0.5rem;
   margin-top: 1rem;
+  margin-left: 0.5rem;
 
   /* BORDAS */
   border-radius: 0.25rem;
@@ -89,27 +90,6 @@ button {
 }
 
 button:hover {
-  background-color: var(--blue-500);
+  background-color: white;
+  color: black;
 }
-
-
-a {
-  /* COLORAÇÃO */
-  color: var(--link);
-
-  /* TIPOGRAFIA */
-  text-decoration: none;
-
-  /* COMPORTAMENTO/ANIMAÇÃO */
-  transition: color 200ms ease-in-out 0.025s;
-}
-
-
-a:hover {
-  /* COLORAÇÃO */
-  color: var(--blue-300);
-
-  /* TIPOGRAFIA */
-  text-decoration: underline;
-}
-

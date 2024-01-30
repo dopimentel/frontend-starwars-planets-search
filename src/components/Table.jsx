@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../context/AppProvider';
+import stylelint from './Table.module.css';
 
 export default function Table() {
   const { planetsFiltered } = useContext(AppContext);
@@ -11,7 +12,7 @@ export default function Table() {
   }, [planetsFiltered]);
 
   return (
-    <table>
+    <table className={ stylelint.container }>
       <thead>
         <tr>
           {headers.map((header) => (

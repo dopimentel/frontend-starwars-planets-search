@@ -19,7 +19,7 @@ export default function AppliedFilters() {
   };
   return (
     <ul className={ styles.ul }>
-      {currentFilters.length && currentFilters.map(
+      {currentFilters.length > 0 && currentFilters.map(
         ({ column: col, operation: oper, value: val }, index) => (
           <li className={ styles.li } key={ index } data-testid="filter">
             {`${col} ${oper} ${val}`}

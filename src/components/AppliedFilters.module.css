@@ -1,0 +1,25 @@
+ul, ol {
+  display: flex;
+  flex-direction: column;
+  list-style: none; /* Remove os marcadores/bolinhas padrão em listas não ordenadas */
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  align-items: center;
+  display: flex;
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 0;
+  width: 30vh;
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+  color: red;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+}

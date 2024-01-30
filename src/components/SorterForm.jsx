@@ -60,60 +60,57 @@ function SortForm() {
   };
 
   return (
-    <>
-      <form onSubmit={ handleSortSubmit } className={ styles.container }>
-        <label htmlFor="sort-column">
-          Ordenar por:
-          <select
-            name="sort-column"
-            value={ column }
-            onChange={ (e) => handleSortChange(e.target.value) }
-            id="sort-column"
-            data-testid="column-sort"
-          >
-            {COLUMNS.map((col) => (
-              <option key={ col } value={ col }>
-                {col}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <label>
-          Ordem:
-          <input
-            type="radio"
-            name="sort-order"
-            value="ASC"
-            checked={ sort === 'ASC' }
-            onChange={ (e) => handleOrderChange(e) }
-            data-testid="column-sort-input-asc"
-          />
-          Ascendente
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="sort-order"
-            value="DESC"
-            checked={ sort === 'DESC' }
-            onChange={ (e) => handleOrderChange(e) }
-            data-testid="column-sort-input-desc"
-          />
-          Descendente
-        </label>
-
-        <button
-          data-testid="column-sort-button"
-          type="submit"
-          // disabled={ columns.length === 0 }
+    <form onSubmit={ handleSortSubmit } className={ styles.container }>
+      <label htmlFor="sort-column">
+        Ordenar por:
+        <select
+          name="sort-column"
+          value={ column }
+          onChange={ (e) => handleSortChange(e.target.value) }
+          id="sort-column"
+          data-testid="column-sort"
         >
-          Ordenar
-        </button>
-      </form>
+          {COLUMNS.map((col) => (
+            <option key={ col } value={ col }>
+              {col}
+            </option>
+          ))}
+        </select>
+      </label>
 
-      <hr />
-    </>
+      <label>
+        Ordem:
+        <input
+          type="radio"
+          name="sort-order"
+          value="ASC"
+          checked={ sort === 'ASC' }
+          onChange={ (e) => handleOrderChange(e) }
+          data-testid="column-sort-input-asc"
+        />
+        Ascendente
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="sort-order"
+          value="DESC"
+          checked={ sort === 'DESC' }
+          onChange={ (e) => handleOrderChange(e) }
+          data-testid="column-sort-input-desc"
+        />
+        Descendente
+      </label>
+
+      <button
+        data-testid="column-sort-button"
+        type="submit"
+        // disabled={ columns.length === 0 }
+      >
+        Ordenar
+      </button>
+    </form>
+
   );
 }
 
