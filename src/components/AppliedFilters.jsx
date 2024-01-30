@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { AppContext } from '../context/AppProvider';
+import styles from './AppliedFilters.module.css';
 
 export default function AppliedFilters() {
   const { filterByName,
@@ -17,25 +18,21 @@ export default function AppliedFilters() {
     if (filterByName.length > 0) setFilterByName('');
   };
   return (
-    <ul>
-      <h2>Filtros</h2>
-      {!currentFilters.length ? (
-        <p>Nenhum filtro aplicado</p>
-      ) : (
-        currentFilters.map(
-          ({ column: col, operation: oper, value: val }, index) => (
-            <li key={ index } data-testid="filter">
-              {`${col} ${oper} ${val}`}
-              <button
-                id={ `${col}` }
-                type="button"
-                onClick={ (e) => handleClick(e) }
-              >
-                X
-              </button>
-            </li>
-          ),
-        )
+    <ul className={ styles.ul }>
+      {currentFilters.length && currentFilters.map(
+        ({ column: col, operation: oper, value: val }, index) => (
+          <li className={ styles.li } key={ index } data-testid="filter">
+            {`${col} ${oper} ${val}`}
+            <button
+              className={ styles.button }
+              id={ `${col}` }
+              type="button"
+              onClick={ (e) => handleClick(e) }
+            >
+              X
+            </button>
+          </li>
+        ),
       )}
     </ul>
   );
