@@ -27,9 +27,11 @@ describe("App forms filters testes", () => {
     });
   });
 
-  it("Title test", () => {
-    const message = screen.getByText(/Star Wars Project/i);
-    expect(message).toBeInTheDocument();
+  it("Title test", async () => {
+    await waitFor(() => {
+      const message = screen.getByText(/Star Wars Planets/i);
+      expect(message).toBeInTheDocument();
+    }, { timeout: 5000 });
   });
 
   it("Test filter by name. It test if Alderaan is not showed when Tatooine is typed", () => {
