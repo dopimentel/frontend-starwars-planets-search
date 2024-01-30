@@ -2,7 +2,12 @@
 
   /* overflow-x: auto; para permitir a rolagem horizontal */
   border-collapse: collapse;
-  overflow-x: scroll;
+
+  /* overflow-x: scroll; */
+}
+
+tbody {
+  overflow-y: auto;
 }
 
 thead th, tbody td {
@@ -14,6 +19,8 @@ thead th, tbody td {
 thead th {
   background-color: #f2f2f2;
   font-weight: 700;
+  position: sticky;
+  top: 0;
 }
 
 tbody tr:hover {

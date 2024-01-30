@@ -10,7 +10,7 @@ import AppliedFilters from './components/AppliedFilters';
 
 function App() {
   const [shrinkTitle, setShrinkTitle] = useState(false);
-  const timeToShrink = 3000;
+  const timeToShrink = 5000;
   useEffect(() => {
     const timer = setTimeout(() => {
       setShrinkTitle(true);
@@ -25,7 +25,7 @@ function App() {
         <ReactTyped
           className={ `${styles.title} ${shrinkTitle ? styles.shrink : ''}` }
           strings={ ['STAR WARS PLANETS'] }
-          typeSpeed={ 200 }
+          typeSpeed={ 155 }
         />
         <header className={ styles.header }>
           <FilterByName />
