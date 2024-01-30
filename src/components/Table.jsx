@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../context/AppProvider';
-import stylelint from './Table.module.css';
+import styles from './Table.module.css';
 
 export default function Table() {
   const { planetsFiltered } = useContext(AppContext);
@@ -12,7 +12,7 @@ export default function Table() {
   }, [planetsFiltered]);
 
   return (
-    <table className={ stylelint.container }>
+    <table className={ styles.container }>
       <thead>
         <tr>
           {headers.map((header) => (
@@ -21,18 +21,28 @@ export default function Table() {
         </tr>
       </thead>
       <tbody>
-        {planetsFiltered && planetsFiltered.map((planet, index) => (
-          <tr key={ index }>
-            {headers.map((header) => (
-              <td
-                key={ header }
-                data-testid={ header === 'name' ? 'planet-name' : undefined }
-              >
-                {planet[header]}
-              </td>
-            ))}
-          </tr>
-        ))}
+        {
+          planetsFiltered
+            ? planetsFiltered.map((planet, index) => (
+              <tr key={ index }>
+                {headers.map((header) => (
+                  <td
+                    key={ header }
+                    data-testid={ header === 'name' ? 'planet-name' : undefined }
+                  >
+                    {planet[header]}
+                  </td>
+                ))}
+              </tr>
+            ))
+            : (
+              <p>
+                Loading
+                <div className={ styles.spinner } />
+              </p>
+            )
+        }
+
       </tbody>
     </table>
   );
