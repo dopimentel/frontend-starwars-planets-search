@@ -69,7 +69,7 @@ code {
 button {
   /* DIMENSIONAMENTO */
   height: 2.75rem;
-  width: 100%;
+  width: 30%;
 
   /* COLORAÇÃO */
   background-color: var(--blue-300);

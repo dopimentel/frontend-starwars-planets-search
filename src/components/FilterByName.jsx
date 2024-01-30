@@ -1,10 +1,11 @@
 import { useContext } from 'react';
 import { AppContext } from '../context/AppProvider';
+import styles from './Form.module.css';
 
 export default function FilterByName() {
   const { filterByName, setFilterByName } = useContext(AppContext);
   return (
-    <div>
+    <div className={ styles.formName }>
       <label htmlFor="inputName">Filtrar por nome:</label>
       <input
         data-testid="name-filter"

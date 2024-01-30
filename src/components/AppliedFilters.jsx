@@ -1,12 +1,16 @@
 import { useContext } from 'react';
 import { AppContext } from '../context/AppProvider';
 
-
 export default function AppliedFilters() {
-    const { filterByName, currentFilters, setFilterByName, deleteFilter, columns, setColumn, setColumns} = useContext(AppContext);
-    const handleClick = (e) => {
-    // console.log('clicou');
-    // console.log(e.target);
+  const { filterByName,
+    currentFilters,
+    setFilterByName,
+    deleteFilter,
+    columns,
+    setColumn,
+    setColumns,
+  } = useContext(AppContext);
+  const handleClick = (e) => {
     deleteFilter(e.target.id);
     setColumns([...columns, e.target.id]);
     setColumn(columns[0] || e.target.id);

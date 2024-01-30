@@ -1,10 +1,10 @@
 .container {
-    /* POSICIONAMENTO */
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    text-align: center;
-  
-    /* COLORAÇÃO */
-    background-color: red
-  }
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.formName {
+  text-align: center;
+  width: 100%;
+}

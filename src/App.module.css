@@ -24,13 +24,12 @@
 }
 
 .header {
-  align-items: center;
   background-color: #282c34;
   color: white;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   font-size: calc(10px + 2vmin);
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .forms {
