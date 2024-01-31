@@ -12,7 +12,7 @@
   color: white;
   display: flex;
   font-family: Orbitron , sans-serif;
-  font-size: calc(10vh + 2vmin);
+  font-size: 1.5rem;
   height: 100vh;
   justify-content: center;
   transition: height 3s ease-in-out , font-size 3s ease-in-out;
